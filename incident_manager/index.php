@@ -42,6 +42,15 @@ switch ($action) {
         $message = "This incident was added to our database.";
         include('incident_create.php');
         break;
+    case 'create_incident':
+        $customer_id = filter_input(INPUT_POST, 'customer_id', FILTER_VALIDATE_INT);
+        $product_code = filter_input(INPUT_POST, 'product_code');
+        $title = filter_input(INPUT_POST, 'title');
+        $description = filter_input(INPUT_POST, 'description');
+        add_incident($customer_id, $product_code, $title, $description);
+        $message = "This incident was added to our database.";
+        include('incident_create.php');
+        break;
 
 }
 ?>
