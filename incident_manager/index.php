@@ -51,8 +51,9 @@ switch ($action) {
         $technicians = TechnicianDB::getTechnicians();
         include('select_tech.php');
         break;
-    case 'assign_incident':
-        include ('incident_assign.php');
+    case 'tech_select':
+        
+        include('incident_assign.php');
         break;
 }
 ?>
