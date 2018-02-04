@@ -1,5 +1,8 @@
 <?php include '../view/header.php'; ?>
+<?php $_SESSION['incident']['key1'] = filter_input(INPUT_POST, "incident_id");?>
+
 <main>
+    <?php var_dump($_SESSION);?>
 
     <h1>Technician List</h1>
 
@@ -17,6 +20,8 @@
                        value="tech_select">
                 <input type="hidden" name="technician_id"
                        value="<?php echo htmlspecialchars($technician->getID()); ?>">
+                <input type="hidden" name="technician_name"
+                       value="<?php echo htmlspecialchars($technician->getFullName()); ?>">
                 <input type="submit" value="Select">
             </form></td>
         </tr>

@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (!isset($_SESSION['incident'])) { $_SESSION['incident'] = array(); } 
+//unset($_SESSION['tech_id']);
+
 require('../model/database.php');
 require('../model/customer_db.php');
 require('../model/product_db.php');
@@ -52,7 +56,8 @@ switch ($action) {
         include('select_tech.php');
         break;
     case 'tech_select':
-        
+        $inci = $_SESSION['incident']['key1'];
+        $incident = get_incident_by_id($inci);
         include('incident_assign.php');
         break;
 }

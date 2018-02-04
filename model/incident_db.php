@@ -37,4 +37,20 @@ function unassigned_tech (){
     
     return $incidents;
 }
+
+function get_incident_by_id($incident_id){
+    global $db;
+    $query = 'select * from incidents
+            JOIN customers
+            ON
+            incidents.customerID=customers.customerID
+            and incidents.techID is NULL
+            where incidentID = :incident_id';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':incident_id', $incident_id);
+    $statement->execute();
+    $incident = $statement->fetchAll();
+    $statement->closeCursor();
+    return $incident;       
+}
 ?>

@@ -1,7 +1,8 @@
 <?php include '../view/header.php'; ?>
 
-<main>
 
+<main>
+<?php var_dump($_SESSION);?>
     <h2>Create the Incident Select Page and CHANGE THIS HEADLINE</h2>
     
     <table>
