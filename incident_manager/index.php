@@ -4,21 +4,9 @@ require('../model/customer_db.php');
 require('../model/product_db.php');
 require('../model/incident_db.php');
 
-require('../model/fields.php');
-require('../model/validate.php');
-
-// Create Validate object
-$validate = new Validate();
-$fields = $validate->getFields();
-$fields->addField('customer_id');
-$fields->addField('product_code');
-$fields->addField('date_opened');
-$fields->addField('title');
-$fields->addField('description');
-//$fields->addField('postal_code');
-//$fields->addField('phone');
-//$fields->addField('email');
-//$fields->addField('password');
+require('../model/database_oo.php');
+require('../model/technician.php');
+require('../model/technician_db.php');
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action === NULL) {
@@ -30,7 +18,6 @@ if ($action === NULL) {
 
 //instantiate variable(s)
 $email = '';
-$incidents = array();
 
 switch ($action) {
     case 'display_customer_get':
@@ -43,6 +30,7 @@ switch ($action) {
         include('incident_create.php');
         break;
     case 'select_incident':
+        $incidents = unassigned_tech();
         $message = "This incident was added to our database.";
         include('incident_select.php');
         break;
@@ -60,15 +48,11 @@ switch ($action) {
         include('incident_create.php');
         break;
     case 'incident_select':
-        $customer_id = filter_input(INPUT_POST, 'customer_id', FILTER_VALIDATE_INT);
-        
-//        $product_code = filter_input(INPUT_POST, 'product_code');
-//        $title = filter_input(INPUT_POST, 'title');
-//        $description = filter_input(INPUT_POST, 'description');
-//        add_incident($customer_id, $product_code, $title, $description);
-//        $message = "This incident was added to our database.";
-//        include('incident_create.php');
+        $technicians = TechnicianDB::getTechnicians();
+        include('select_tech.php');
         break;
-
+    case 'assign_incident':
+        include ('incident_assign.php');
+        break;
 }
 ?>

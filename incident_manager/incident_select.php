@@ -3,7 +3,7 @@
 <main>
 
     <h2>Create the Incident Select Page and CHANGE THIS HEADLINE</h2>
-    <p>your list goes here?</p>
+    
     <table>
         <tr>
             <th>Customer</th>
@@ -13,10 +13,10 @@
             <th>Description</th>
             <th>&nbsp;</th>
         </tr>
-        <?php foreach ($incidents as $incident) : 
-            ?>
+        <?php foreach ($incidents as $incident) : ?>
+<!--        <p><?php var_dump($incident)?></p>-->
         <tr>
-            <td><?php echo htmlspecialchars($incident['customerID']); ?></td>
+            <td><?php echo htmlspecialchars($incident['firstName'] . ' ' . $incident['lastName']); ?></td>
             <td><?php echo htmlspecialchars($incident['productCode']); ?></td>
             <td><?php echo htmlspecialchars($incident['dateOpened']); ?></td>
             <td><?php echo htmlspecialchars($incident['title']); ?></td>

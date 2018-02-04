@@ -20,23 +20,20 @@ function add_incident($customer_id, $product_code, $title, $description) {
 
 function unassigned_tech (){
     global $db;
-    $query = 'SELECT * 
-                FROM `incidents` 
-                WHERE `techID` is null';
+    $query = 
+        'SELECT *
+        FROM incidents
+        JOIN customers
+        ON
+        incidents.customerID=customers.customerID
+        and incidents.techID is NULL';
     
     $statement = $db->prepare($query);
     $statement->execute();
-    $rows = $statement->fetchAll();
+    $incidents = $statement->fetchAll();
     $statement->closeCursor();
     
-    $incidents = array();
-        foreach($rows as $row) {
-            $i = new Incident(
-                    $row['firstName'], $row['lastName'],
-                    $row['email'], $row['phone'], $row['password']);
-            $t->setID($row['techID']);
-            $incidents[] = $i;
-        }
+
     
     return $incidents;
 }
