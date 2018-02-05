@@ -1,7 +1,10 @@
 <?php
 session_start();
-if (!isset($_SESSION['incident'])) { $_SESSION['incident'] = array(); } 
-//unset($_SESSION['tech_id']);
+if (!isset($_SESSION['incident'])) { 
+    $_SESSION['incident'] = array(); 
+    
+} 
+var_dump($_SESSION);
 
 require('../model/database.php');
 require('../model/customer_db.php');
@@ -56,8 +59,22 @@ switch ($action) {
         include('select_tech.php');
         break;
     case 'tech_select':
-        $inci = $_SESSION['incident']['key1'];
-        $incident = get_incident_by_id($inci);
+        $tech_name = filter_input(INPUT_POST, 'name');
+        $technician_id = filter_input(INPUT_POST, 'technician_id');
+        $inci = $_SESSION['incident'][key1];
+        
+            $incident = get_incident_by_id($inci);
+                if (empty($tech_name)){
+                    
+                }
+                else{
+                    $message = "Tech name is empty";
+                    update_incident($tech_id, $inci);
+                    include('incident_select.php');
+                }
+        
+        
+        
         include('incident_assign.php');
         break;
 }

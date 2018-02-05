@@ -53,4 +53,18 @@ function get_incident_by_id($incident_id){
     $statement->closeCursor();
     return $incident;       
 }
+
+function update_incident($tech_id, $incident_id){
+    global $db;
+    $query = 'update incidents
+            set techID = :tech_id
+            where incidentID = incident_id';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':tech_id', $tech_id);
+    $statement->bindValue(':incident_id', $incident_id);
+    $statement->execute();
+    //$updated = $statement->fetchAll();
+    $statement->closeCursor();
+    //return $updated;     
+}
 ?>

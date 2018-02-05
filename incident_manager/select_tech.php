@@ -5,6 +5,7 @@
     <?php var_dump($_SESSION);?>
 
     <h1>Technician List</h1>
+    
 
     <!-- display a table of technicians -->
     <table>
