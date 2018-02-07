@@ -11,7 +11,7 @@
         <p><a href="?action=incident_select">Select Another Incident</a></p>
     <?php else: ?>
     
-    <form action="" method="post">
+    <form action="." method="post">
         <input type="hidden" name="action" value="assign_incident">
 <!--        <input type="hidden" name="incident_id"
                        value="<?php echo htmlspecialchars($incident['incidentID']); ?>">-->

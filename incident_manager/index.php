@@ -60,22 +60,23 @@ switch ($action) {
         break;
     case 'tech_select':
         $tech_name = filter_input(INPUT_POST, 'name');
-        $technician_id = filter_input(INPUT_POST, 'technician_id');
-        $inci = $_SESSION['incident'][key1];
-        
-            $incident = get_incident_by_id($inci);
-                if (empty($tech_name)){
-                    
-                }
-                else{
-                    $message = "Tech name is empty";
-                    update_incident($tech_id, $inci);
-                    include('incident_select.php');
-                }
-        
-        
+        $technician_id = $_SESSION['incident']['key2'];
+        $inci = $_SESSION['incident']['key1'];
         
         include('incident_assign.php');
         break;
+    case 'assigned':
+        include('assigned_incidnet.php');
+        break;
+    
+//    $incident = get_incident_by_id($inci);
+//                if (empty($tech_name)){
+//                    
+//                }
+//                else{
+//                    $message = "Tech name is empty";
+//                    update_incident($tech_id, $inci);
+//                    include('incident_select.php');
+//                }
 }
 ?>
