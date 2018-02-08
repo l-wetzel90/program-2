@@ -18,9 +18,9 @@
             <td><?php echo htmlspecialchars($technician->getFullName()); ?></td>
             <td><form action="." method="post">
                 <input type="hidden" name="action"
-                       value="select_tech_for_incident">
+                       value="assign_incident">
                 <input type="hidden" name="technician_id"
-                       value="<?php echo $_SESSION['incident']['key2'] = htmlspecialchars($technician->getID()); ?>">
+                       value="<?php echo htmlspecialchars($technician->getID()); ?>">
                 <input type="hidden" name="technician_name"
                        value="<?php echo htmlspecialchars($technician->getFullName()); ?>">
                 <input type="submit" value="Select">
@@ -31,5 +31,6 @@
     
 
 </main>
+
 <?php include '../view/footer.php'; ?>
 

@@ -23,11 +23,11 @@
             <td><?php echo htmlspecialchars($incident['title']); ?></td>
             <td><?php echo htmlspecialchars($incident['description']); ?></td>
             
-            <td><form action="" method="post">
+            <td><form action="." method="post">
                 <input type="hidden" name="action"
-                       value="incident_select">
+                       value="select_tech_for_incident">
                 <input type="hidden" name="incident_id"
-                       value="<?php echo $_SESSION['incident']['key1'] = htmlspecialchars($incident['incidentID']); ?>">
+                       value="<?php echo htmlspecialchars($incident['incidentID']); ?>">
                 <input type="submit" value="Select">
             </form></td>
         </tr>
