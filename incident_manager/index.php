@@ -43,6 +43,7 @@ switch ($action) {
         break;
     case 'select_tech_for_incident':
         $message = "Selecting tech.";
+        $technicians = TechnicianDB::getTechnicians();
         include('select_tech_for_incident.php');
         break;
     case 'create_incident':
@@ -54,22 +55,25 @@ switch ($action) {
         $message = "This incident was added to our database.";
         include('incident_create.php');
         break;
-    case 'incident_select':
-        $technicians = TechnicianDB::getTechnicians();
-        include('select_tech.php');
-        break;
-    case 'tech_select':
-        $tech_name = filter_input(INPUT_POST, 'name');
-        $technician_id = $_SESSION['incident']['key2'];
-        $inci = $_SESSION['incident']['key1'];
+//    case 'incident_select':
+//        $technicians = TechnicianDB::getTechnicians();
+//        include('select_tech.php');
+//        break;
+    case 'assign_incident':
+        //$tech_name = filter_input(INPUT_POST, 'name');
+        //$technician_id = $_SESSION['incident']['key2'];
         
+        $incident = get_incident_by_id($_SESSION['incident']['key1']);
+        
+        //$message = "Tech name is empty";
         include('incident_assign.php');
+        
         break;
     case 'assigned':
         include('assigned_incidnet.php');
         break;
     
-//    $incident = get_incident_by_id($inci);
+
 //                if (empty($tech_name)){
 //                    
 //                }

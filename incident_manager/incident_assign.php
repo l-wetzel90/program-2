@@ -1,9 +1,11 @@
 <?php include '../view/header.php'; ?>
-<?php $_SESSION['incident']['key2']= filter_input(INPUT_POST, "technician_id");?>
+
 
 <main>
-    <!-- <?php var_dump($_SESSION['incident']);?>
+   
     <?php var_dump($incident);?> -->
+    
+    
     <h2>Assign Incident</h2>
     
     <?php if (isset($message)) : ?>
@@ -17,17 +19,18 @@
                        value="<?php echo htmlspecialchars($incident['incidentID']); ?>">-->
         
         
-        <?php foreach ($incident as $inc) : ?>
-        <label>Customer:  </label><label><?php echo htmlspecialchars($inc['firstName'] . ' ' . $inc['lastName']); ?></label><br>
+        //<?php foreach ($incident as $inc) : ?>
+        <label>Customer:  </label><label><?php echo htmlspecialchars($incident['firstName'] . ' ' . $incident['lastName']); ?></label><br>
         
-        <label>Product:  </label><label><?php echo htmlspecialchars($inc['productCode']); ?></label><br>
+        <label>Product:  </label><label><?php echo htmlspecialchars($incident['productCode']); ?></label><br>
         
         <label>Technician:  </label><label name='tech'><?php echo filter_input(INPUT_POST,'technician_name'); ?></label><br>
         
-        <?php endforeach; ?>
+        //<?php endforeach; ?>
 
         <input type="submit" value="Assign Incident">
     </form>
+        
         <?php endif; ?>
 
 
