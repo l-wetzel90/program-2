@@ -57,7 +57,19 @@ switch ($action) {
         include('incident_create.php');
         break;
     case 'assign_incident':
+        $_SESSION['incident']['key2'] = filter_input(INPUT_POST,'technician_id');;
         $incident = get_incident_by_id($_SESSION['incident']['key1']);
+        
+        
+        include('incident_assign.php');
+        
+        break;
+    case 'assigned_incident':  
+        $inc = $_SESSION['incident']['key1'];
+        $tech = $_SESSION['incident']['key2'];
+        
+        update_incident($tech, $inc);
+        $message = "This incident was added to our database";
         include('incident_assign.php');
         break;
 }

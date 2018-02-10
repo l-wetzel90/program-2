@@ -58,7 +58,7 @@ function update_incident($tech_id, $incident_id){
     global $db;
     $query = 'update incidents
             set techID = :tech_id
-            where incidentID = incident_id';
+            where incidentID = :incident_id';
     $statement = $db->prepare($query);
     $statement->bindValue(':tech_id', $tech_id);
     $statement->bindValue(':incident_id', $incident_id);

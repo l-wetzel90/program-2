@@ -15,7 +15,7 @@
             <th>&nbsp;</th>
         </tr>
         <?php foreach ($incidents as $incident) : ?>
-<!--        <p><?php var_dump($incident)?></p>-->
+
         <tr>
             <td><?php echo htmlspecialchars($incident['firstName'] . ' ' . $incident['lastName']); ?></td>
             <td><?php echo htmlspecialchars($incident['productCode']); ?></td>
